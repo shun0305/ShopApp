@@ -25,6 +25,8 @@ const EditProductScreen = props => {
         editedProduct ? editedProduct.description : ''
     );
 
+
+
     const submitHandler = useCallback(() => {
         if (editedProduct) {
             dispatch(productsActions.updateProduct(prodId, title, description, imageUrl)
@@ -33,6 +35,7 @@ const EditProductScreen = props => {
             dispatch(productsActions.createProduct(title, description, imageUrl, +price)
             );
         }
+        props.navigation.goBack();
     }, [dispatch, prodId, title, description, imageUrl, price]);
 
     useEffect(() => {
